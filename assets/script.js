@@ -31,9 +31,9 @@ const nbrSlides = slides.length;
 //appel des fonctions
 Caroussel(firstslide);
 createDots();
-switchDots(firstslide); // Mettez à jour les indicateurs au démarrage
+switchDots(firstslide); 
 
-// Gestionnaire d'événement clic flèche gauche
+//clic flèche gauche
 arrowLeft.addEventListener('click', function () {
 	if (firstslide === 0) {
 		firstslide = nbrSlides - 1;
@@ -45,7 +45,7 @@ arrowLeft.addEventListener('click', function () {
 	switchDots(firstslide); // Mettez à jour les indicateurs
 });
 
-// Gestionnaire d'événement clic flèche droite
+//clic flèche droite
 arrowRight.addEventListener('click', function () {
 	if (firstslide === nbrSlides - 1) {
 		firstslide = 0;
@@ -54,7 +54,7 @@ arrowRight.addEventListener('click', function () {
 	}
 // Mettre à jour l'affichage du carrousel
 	Caroussel(firstslide, 'right');
-	switchDots(firstslide); // Mettez à jour les indicateurs
+	switchDots(firstslide); 
 });
 
 // Fonction pour créer les indicateurs de diapositives
