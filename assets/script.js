@@ -18,50 +18,59 @@ const slides = [
 	}
 ];
 
-// Sélectionner les éléments HTML
-const arrowLeft = document.querySelector('.arrow_left');
+const arrowLeft = document.querySelector(".arrow_left");
 const arrowRight = document.querySelector('.arrow_right');
 const dots = document.querySelector(".dots");
-const bannerImg = document.querySelector('.banner-img');
+const bannerImg = document.querySelector(".banner-img");
 
-// Définir l'indice de la slide 1 et du nbr de diapo
 let firstslide = 0;
 const nbrSlides = slides.length;
 
-//appel des fonctions
-Caroussel(firstslide);
-createDots();
-switchDots(firstslide); 
 
-//clic flèche gauche
-arrowLeft.addEventListener('click', function () {
+caroussel(firstslide);
+createDots();
+switchDots(); 
+
+arrowLeft.addEventListener("click",() => {
 	if (firstslide === 0) {
 		firstslide = nbrSlides - 1;
 	} else {
 		firstslide--;
 	}
-	// Mettre à jour l'affichage du carrousel
-	Caroussel(firstslide, 'left');
-	switchDots(firstslide); // Mettez à jour les indicateurs
+	caroussel('left');
+	switchDots(firstslide);
 });
 
-//clic flèche droite
-arrowRight.addEventListener('click', function () {
+arrowRight.addEventListener("click",() => {
 	if (firstslide === nbrSlides - 1) {
 		firstslide = 0;
 	} else {
 		firstslide++;
 	}
-// Mettre à jour l'affichage du carrousel
-	Caroussel(firstslide, 'right');
+	caroussel('right');
 	switchDots(firstslide); 
 });
 
-// Fonction pour créer les indicateurs de diapositives
-    function createDots() {
-        for (let index = 0; index < slides.length; index++) {
-            const dot = document.createElement("div");
-            dot.setAttribute("class", "dot");
-            dots.appendChild(dot);
-        }
+function createDots() {
+    for (let index = 0; index < slides.length; index++) {
+        const dot = document.createElement("div");
+        dot.setAttribute("class", "dot");
+        dots.appendChild(dot);
     }
+}
+
+function caroussel() {
+	
+}
+
+function switchDots() {
+    const listPoints = document.querySelectorAll(".dot");
+
+    listPoints.forEach((dot, index) => {
+        if (index === firstslide) {
+            dot.classList.add('dot_selected');
+        } else {
+            dot.classList.remove('dot_selected');
+        }
+    });
+}
